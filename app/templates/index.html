@@ -1,0 +1,61 @@
+{% load bootstrap %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+        <title>Post de Facebook</title>
+        <style type="text/css">
+            .multiple-checkbox ul { /* Used to hide <li> elements in multiple checkbox forms */
+              padding-left: 0px;
+              list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <h1>Post para Analisis semantico</h1>
+                    <p>Seleccione los post en los que se evaluarán los comentarios y likes</p>
+                </div>
+            </div>
+            <!-- horizontal form -->
+            <div class="row">
+                <div class="span12">
+                    <hr />
+                    <form method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %} autocomplete="off" class="form-horizontal" role="form">
+                        {{ form|bootstrap_horizontal }}
+                        {% csrf_token %}
+                        {% if since %}
+                            <input type="hidden" value="{{ since }}" name="since">
+                        {% endif %}
+                        {% if until %}
+                            <input type="hidden" value="{{ until }}" name="until">
+                        {% endif %}
+                        <input type="hidden" value="{{ limit }}" name="limit">
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <input type="submit" class="btn btn-primary" value="Submit" />
+                            </div>
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <ul class="pager">
+                                    {% if previous %}
+                                        <li class="previous"><a href="?{{ previous }}">&larr; Older</a></li>
+                                    {% endif %}
+                                    {% if next %}
+                                        <li class="next"><a href="?{{ next }}">Newer &rarr;</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- scripts -->
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+django
+psycopg2
+django-axes
+django-secure
+django_facebook
+django-bootstrap-form
+restkit
+django-celery
+pillow
+pymongo
+twython
+smart_unicode
