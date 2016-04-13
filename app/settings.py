@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = (
+    'flat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,7 +123,7 @@ DATABASES = {
         # Set to empty string for localhost. Not used with sqlite3.
         "HOST": "localhost",
         # Set to empty string for default. Not used with sqlite3.
-        "PORT": "",
+        "PORT": "5432",
     },
     'ahorrando': {
         'NAME': 'ahorrando',
@@ -193,13 +194,15 @@ CELERY_ENABLE_UTC = True
 
 BROKER_URL = 'amqp://guest:guest@localhost:5672'
 
-CELERY_RESULT_BACKEND = "mongodb"
-CELERY_MONGODB_BACKEND_SETTINGS = {
-    "host": "127.0.0.1",
-    "port": 27017,
-    "database": "celery",
-    "taskmeta_collection": "my_taskmeta" # Collection name to use for task output
-}
+CELERY_RESULT_BACKEND = 'redis://localhost/1'
+
+# CELERY_RESULT_BACKEND = "mongodb"
+# CELERY_MONGODB_BACKEND_SETTINGS = {
+#     "host": "127.0.0.1",
+#     "port": 27017,
+#     "database": "celery",
+#     "taskmeta_collection": "my_taskmeta" # Collection name to use for task output
+# }
 
 CELERY_IMPORTS = ("tasks.tasks")
 

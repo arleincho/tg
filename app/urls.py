@@ -24,7 +24,8 @@ admin.autodiscover()
 _slash = "/" if settings.APPEND_SLASH else ""
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(admin.site.urls)),
     url(r"^%s%s$" % ('facebook'.strip("/"), _slash), 'facebook.views.read_posts', name='read_posts'),
     url(r"^%s%s$" % ('facebook/get_posts'.strip("/"), _slash), 'facebook.views.get_posts', name='get_posts'),
     url(r'^twitter/', include('twitter.urls'))

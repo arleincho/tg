@@ -21,7 +21,7 @@
                     <p>Seleccione los tweets en los que se evaluarán los retweets</p>
                 </div>
                 {% if user.is_authenticated %}
-                    <h1>Welcome {{ user }}</h1><a href="{% url 'auth_logout' %}?next={{ request.path|urlencode }}">logout</a><br />
+                    <h1>Welcome {{ user }}</h1><br />
                 {% endif %}
             </div>
             <!-- horizontal form -->

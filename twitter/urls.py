@@ -1,5 +1,6 @@
 # from django.conf.urls.defaults import *
 from django.conf.urls import patterns, url
+from django.contrib import admin
 
 # your_app = name of your root djang app.
 urlpatterns = patterns('twitter.views',
@@ -17,3 +18,7 @@ urlpatterns = patterns('twitter.views',
     # this view and url definition to get the rest of your desired pages/functionality.
     url(r'^user_timeline/?$', "user_timeline", name="twitter_timeline"),
 )
+
+
+
+admin.site.site_header = 'Trabajo de Grado'
